@@ -10,6 +10,7 @@ fazerbackup() {
   cp .env painelbackup
   zip -r painelbackup.zip painelbackup
   mv painelbackup.zip /root
+  pon
   echo
   echo "painelbackup.zip salvo em /root"
   echo
