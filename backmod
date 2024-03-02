@@ -7,7 +7,7 @@ dato=$(date "+%d-%m-%Y_%Hh-%Mm-%Ss")
 cd /root
 [[ ! -e /root/backupAuto ]] && {
 mkdir backupAuto
-(crontab -l > /tmp/apiWaRes; echo "* */5 * * * backmod" >> /tmp/apiWaRes; cat /tmp/apiWaRes) | crontab -
+(crontab -l > /tmp/apiWaRes; echo "0 */5 * * * backmod" >> /tmp/apiWaRes; cat /tmp/apiWaRes) | crontab -
 }
 cd /root/painelMod
 
