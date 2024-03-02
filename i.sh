@@ -16,7 +16,7 @@ echo
 exit 0
 }
 [[ -e /root/painelMod/src/index.ts ]] && {
-  echo
+  clear
   echo "O Painel já está instalado, deseja remover? (s/n)"
   read remo
   [[ $remo = @(s|S) ]] && {
@@ -34,7 +34,7 @@ exit 0
   }
   exit 0
 }
-echo
+clear
 echo "Em Qual Porta Você Quer Ativar?"
 read porta
 echo
