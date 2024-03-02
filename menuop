@@ -4,8 +4,8 @@ fazerbackup() {
   clear
   echo "Fazendo bakcup..."
   cd /root/painelMod
-  rm -r painelbackup > /dev/null
-  mkdir painelbackup > /dev/null
+  #rm -r painelbackup > /dev/null
+  #mkdir painelbackup > /dev/null
   cp prisma/database.db painelbackup
   cp .env painelbackup
   zip -r painelbackup.zip painelbackup
@@ -14,6 +14,19 @@ fazerbackup() {
   echo "painelbackup.zip salvo em /root"
   echo
   exit 0
+}
+removerpainel() {
+  clear
+  read -p "Deseja remover o painel? (s/n)" rev
+  [[ $rev = @(s|S) ]] && {
+    echo "Removendo..."
+    poff
+    rm /bin/pon /bin/poff /bin/menuop
+    rm -r /root/painelMod
+    echo "Removido com sucesso!"
+    exit 0
+  }
+  menuop
 }
 restaurarback() {
   clear
@@ -53,6 +66,7 @@ menuop() {
   echo "1. Fazer backup"
   echo "2. Restaurar backup"
   echo "3. Reiniciar painel"
+  echo "4. Remover painel"
   echo "0. Sair"
   read -p "> " resp
   if [[ $resp = "1" ]]; then
@@ -69,6 +83,9 @@ menuop() {
     echo "Reiniciado com sucesso!"
     sleep 3
     menuop
+  elif [[ $resp = "4" ]]; then
+    #statements
+    removerpainel
   elif [[ $resp = "0" ]]; then
     #statements
     echo "Saindo..."
