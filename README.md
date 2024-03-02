@@ -16,6 +16,11 @@
 ```sh
 sudo apt install wget -y; wget https://raw.githubusercontent.com/endblack/painelMod/main/i.sh; chmod 777 i.sh; ./i.sh
 ```
+✅ Adicionado um menu simples <br>
+• para acessar digite ```menuop``` <br>
+• Comando pra ativar/reiniciar ```pon``` <br>
+• Comando para desativar ```poff``` <br>
+
 
 <br> ###########################
 
