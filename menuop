@@ -1,0 +1,83 @@
+#!/bin/bash
+
+fazerbackup() {
+  clear
+  echo "Fazendo bakcup..."
+  cd /root/painelMod
+  rm -r painelbackup > /dev/null
+  mkdir painelbackup > /dev/null
+  cp prisma/database.db painelbackup
+  cp .env painelbackup
+  zip -r painelbackup.zip painelbackup
+  mv painelbackup.zip /root
+  echo
+  echo "painelbackup.zip salvo em /root"
+  echo
+  exit 0
+}
+restaurarback() {
+  clear
+  [[ ! -e /root/painelbackup.zip ]] && {
+    echo "Arquivo painelbackup.zip não encontrado em /root"
+    sleep 4
+    menuop
+  }
+  read -p "Deseja Restaurar o Backup? (s/n)" rapi
+  [[ $rapi = @(s|S) ]] && {
+    echo "Restaurando..."
+    cd /root/painelMod
+    rm prisma/database.db
+    rm .env
+    cd /root
+    unzip painelbackup.zip
+    cd painelbackup
+    mv database.db ../painelMod/prisma
+    mv .env ../painelMod
+    cd /root
+    rm -r painelbackup
+    echo "Backup restaurado com sucesso!"
+    exit 0
+  }
+  [[ $rapi = @(n|N) ]] && {
+    echo "Voltando para o menu"
+    sleep 2
+    menuop
+  }
+  menuop
+}
+#[[ ! -e /root/painelMod/src/index.ts ]] && exit 0
+menuop() {
+  clear
+  echo "Bem vindoª ao painelMod menu"
+  echo 
+  echo "1. Fazer backup"
+  echo "2. Restaurar backup"
+  echo "3. Reiniciar painel"
+  echo "0. Sair"
+  read -p "> " resp
+  if [[ $resp = "1" ]]; then
+    #statements
+    fazerbackup
+  elif [[ $resp = "2" ]]; then
+    #statements
+    restaurarback
+  elif [[ $resp = "3" ]]; then
+    #statements
+    clear
+    echo "Reiniciando..."
+    pon
+    echo "Reiniciado com sucesso!"
+    sleep 3
+    menuop
+  elif [[ $resp = "0" ]]; then
+    #statements
+    echo "Saindo..."
+    exit 0
+  else
+    echo "Opção inválida!"
+    sleep 3
+    clear
+    menuop
+  fi
+}
+menuop
