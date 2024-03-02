@@ -4,15 +4,17 @@
 echo
 echo "Instale Com Usuário Root!"
 echo
+rm i.sh
 exit 0
 }
 
 ubuntuV=$(lsb_release -r | awk '{print $2}' | cut -d. -f1)
 
 [[ $(($ubuntuV < 20)) = 1 ]] && {
-echo
+clear
 echo "A Versão Do Ubuntu Tem Que Ser No Mínimo 20, A Sua É $ubuntuV"
 echo
+rm /root/i.sh
 exit 0
 }
 [[ -e /root/painelMod/src/index.ts ]] && {
