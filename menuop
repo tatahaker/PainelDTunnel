@@ -15,13 +15,25 @@ fazerbackup() {
   echo
   exit 0
 }
+autobakcup() {
+  clear
+  read -p "Deseja ativar o Auto Backup? (s/n) " atb
+  [[ $atb = @(s|S) ]] && {
+    echo "Ativando...."
+    backmod
+    echo
+    echo "Backup de 5 em 5 horas ativo!"
+    exit 0
+  }
+  menuop
+}
 removerpainel() {
   clear
-  read -p "Deseja remover o painel? (s/n)" rev
+  read -p "Deseja remover o painel? (s/n) " rev
   [[ $rev = @(s|S) ]] && {
     echo "Removendo..."
     poff
-    rm /bin/pon /bin/poff /bin/menuop
+    rm /bin/pon /bin/poff /bin/menuop /bin/backmod
     rm -r /root/painelMod
     echo "Removido com sucesso!"
     exit 0
@@ -35,7 +47,7 @@ restaurarback() {
     sleep 4
     menuop
   }
-  read -p "Deseja Restaurar o Backup? (s/n)" rapi
+  read -p "Deseja Restaurar o Backup? (s/n) " rapi
   [[ $rapi = @(s|S) ]] && {
     echo "Restaurando..."
     cd /root/painelMod
@@ -66,7 +78,8 @@ menuop() {
   echo "1. Fazer backup"
   echo "2. Restaurar backup"
   echo "3. Reiniciar painel"
-  echo "4. Remover painel"
+  echo "4. Ativar Auto backup"
+  echo "5. Remover painel"
   echo "0. Sair"
   read -p "> " resp
   if [[ $resp = "1" ]]; then
@@ -84,6 +97,9 @@ menuop() {
     sleep 3
     menuop
   elif [[ $resp = "4" ]]; then
+    #statements
+    autobakcup
+  elif [[ $resp = "5" ]]; then
     #statements
     removerpainel
   elif [[ $resp = "0" ]]; then

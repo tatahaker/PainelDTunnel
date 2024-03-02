@@ -28,6 +28,7 @@ exit 0
   zip -r painelbackup.zip painelbackup
   mv painelbackup.zip /root
   rm -r /root/painelMod
+  rm /root/i.sh
   echo "Removido com sucesso!"
   exit 0
   }
@@ -53,8 +54,8 @@ apt-get install -y nodejs -y
 #=========================
 git clone https://github.com/endblack/painelMod.git
 cd /root/painelMod
-chmod 777 pon poff menuop
-mv pon poff menuop /bin
+chmod 777 pon poff menuop backmod
+mv pon poff menuop backmod /bin
 echo "PORT=$porta" > .env
 echo "NODE_ENV=\"production\"" >> .env
 echo "DATABASE_URL=\"file:./database.db\"" >> .env
@@ -79,4 +80,6 @@ echo "Comando para ATIVAR: pon"
 echo "Comando para DESATIVAR: poff"
 echo
 echo "Digite menuop Para ver o menu"
+echo
+rm /root/i.sh
 pon

@@ -3,7 +3,7 @@
 screen -r -S painel -X quit
 cd /root/painelMod
 [[ -e /root/painelMod/prime ]] && {
-  screen -dmS "pon" sh start.sh
+  screen -dmS "painel" sh start.sh
   echo
   echo "PainelMod Online (WAPI)"
   echo
