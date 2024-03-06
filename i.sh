@@ -49,6 +49,7 @@ apt-get update -y
 apt install wget -y
 apt install curl -y
 apt install zip -y
+apt install cron -y
 apt install unzip -y
 apt install screen -y
 apt install git -y
