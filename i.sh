@@ -47,6 +47,7 @@ sleep 3
 apt update -y
 apt-get update -y
 apt install wget -y
+apt install curl -y
 apt install zip -y
 apt install unzip -y
 apt install screen -y
