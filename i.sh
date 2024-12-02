@@ -17,7 +17,7 @@ echo
 rm /root/i.sh
 exit 0
 }
-[[ -e /root/painelMod/src/index.ts ]] && {
+[[ -e /root/PainelDTunnel/src/index.ts ]] && {
   clear
   echo "O Painel já está instalado, deseja remover? (s/n)"
   read remo
@@ -56,8 +56,8 @@ apt install git -y
 curl -fsSL https://deb.nodesource.com/setup_20.x | bash
 apt-get install -y nodejs -y
 #=========================
-git clone https://github.com/endblack/painelMod.git
-cd /root/painelMod
+git clone https://github.com/tatahaker/PainelDTunnel.git
+cd /root/PainelDTunnel
 chmod 777 pon poff menuop backmod
 mv pon poff menuop backmod /bin
 echo "PORT=$porta" > .env
@@ -78,7 +78,7 @@ clear
 echo
 echo
 echo "TUDO INSTALADO!"
-echo "Os Arquivos Ficam Na Pasta /root/painelMod"
+echo "Os Arquivos Ficam Na Pasta /root/PainelDTunnel"
 echo
 echo "Comando para ATIVAR: pon"
 echo "Comando para DESATIVAR: poff"
