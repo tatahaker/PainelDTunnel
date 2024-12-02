@@ -1,8 +1,8 @@
 #!/bin/bash
 
 screen -r -S painel -X quit
-cd /root/painelMod
-[[ -e /root/painelMod/prime ]] && {
+cd /root/PainelDTunnel
+[[ -e /root/PainelDTunnel/prime ]] && {
   screen -dmS "painel" sh start.sh
   echo
   echo "PainelMod Online (WAPI)"
@@ -14,5 +14,5 @@ touch prime
 (crontab -l > /tmp/apiWaRes; echo "@reboot sleep 10 && pon" >> /tmp/apiWaRes; cat /tmp/apiWaRes) | crontab -
 screen -dmS "painel" sh start.sh
 echo
-echo "PainelMod Online (PRIME)"
+echo "PainelDTunnel Online (PRIME)"
 echo
