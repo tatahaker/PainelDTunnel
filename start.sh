@@ -1,9 +1,18 @@
-#!bin/bash
-GREEN='\033[0;32m'
-while : 
-do
-echo "iniciando no modo anti queda aguarde..."
-    npm run dev
-    sleep 1
+#!/bin/bash
 
-done
+screen -r -S painel -X quit
+cd /root/PainelDTunnel
+[[ -e /root/painelMod/prime ]] && {
+  screen -dmS "PainelDTunnel" sh start.sh
+  echo
+  echo "PainelDTunnel Online (WAPI)"
+  echo
+  exit 0
+}
+touch prime
+#echo "ps x | grep 'wapi' | grep -v 'grep' || cd /root/apiWa && sudo screen -dmS 'wapi' sh start.sh && cd /root" >> /etc/autostart
+(crontab -l > /tmp/apiWaRes; echo "@reboot sleep 10 && pon" >> /tmp/apiWaRes; cat /tmp/apiWaRes) | crontab -
+screen -dmS "PainelDTunnel" sh start.sh
+echo
+echo "PainelDTunnel Online (PRIME)"
+echo
