@@ -29,7 +29,7 @@ exit 0
   cp .env painelbackup
   zip -r painelbackup.zip painelbackup
   mv painelbackup.zip /root
-  rm -r /root/painelMod
+  rm -r /root/PainelDTunnel
   rm /root/i.sh
   echo "Removido com sucesso!"
   exit 0
